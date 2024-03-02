@@ -11,7 +11,15 @@ apt update
 
 echo "dependencies.sh > installing pre-requirements"
 apt install -y python3-pip
-apt install python3.11-venv
+
+echo "dependencies.sh > checking python3.11-venv availability"
+if apt show python3.11-venv &>/dev/null; then
+    echo "dependencies.sh > installing python3.11-venv"
+    apt install -y python3.11-venv
+else
+    echo "dependencies.sh > python3.11-venv not available, falling back to python3-venv"
+    apt install -y python3-venv
+fi
 
 echo "dependencies.sh > creating a python3 virtual environment"
 python3 -m venv .venv
