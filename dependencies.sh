@@ -11,6 +11,7 @@ apt update
 
 echo "dependencies.sh > installing pre-requirements"
 apt install -y python3-pip
+apt install imagemagick
 
 echo "dependencies.sh > checking python3.11-venv availability"
 if apt show python3.11-venv &>/dev/null; then
